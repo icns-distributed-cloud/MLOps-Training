@@ -31,14 +31,14 @@ class MLEngine:
 
         if self.model_config['model_type'] == 'LSTM':
             from app.models.lstm import Net
-            self.model = Net(input_size=self.model_config['input_size'],
+            self.model = Net(input_size=len(self.model_config['input_columns']),
                                 hidden_size=self.model_config['hidden_size'],
-                                output_size=self.model_config['output_size']).to(self.device)
+                                output_size=len(self.model_config['output_size'])).to(self.device)
 
         elif self.model_config['model_type'] == 'Regression':
             from app.models.regression import Regression
-            self.model = Regression(input_size=self.model_config['input_size'],
-                                    output_size=self.model_config['output_size'])
+            self.model = Regression(input_size=len(self.model_config['input_columns']),
+                                    output_size=len(self.model_config['output_size']))
 
         else:
             # todo: other model type
