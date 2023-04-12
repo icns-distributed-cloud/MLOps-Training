@@ -1,0 +1,21 @@
+{
+    "model": {
+        "type": "test",
+        "dataset_path": "data.csv",
+        "model_type": "Regression",
+        "flag": "ms",
+        "epochs": 20,
+        "input_size": 7,
+        "output_size": 1,
+        "seq_len": 1,
+        "lr": 0.05,
+        "batch_size": 30,
+        "loss": "MSE",
+        "optimizer": "SGD",
+        "weight_decay": 1e-4,
+        "step_size": 10,
+        "gamma": 0.1,
+        "state_dict_name": "19.pkl",
+        "checkpoint_path": "simple_regression"
+    }   
+}

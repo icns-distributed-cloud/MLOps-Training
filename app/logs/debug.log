@@ -1,0 +1,72 @@
+2022-11-30 17:01:20 - app.ml_engine - INFO - line 27, parserconfig
+2022-11-30 17:01:20 - app.models.lstm - INFO - line 231, lstmmodel
+2022-11-30 17:01:20 - app.test - INFO - line 23, hello
+2022-11-30 17:10:14 - app.ml_engine - INFO - parserconfig
+2022-11-30 17:10:14 - app.models.lstm - INFO - lstmmodel
+2022-11-30 17:10:14 - app.test - INFO - hello
+2022-11-30 18:05:07 - app.ml_engine - INFO - parserconfig
+2022-11-30 18:05:07 - app.models.lstm - INFO - lstmmodel
+2022-11-30 18:05:07 - app.test - INFO - hello
+2022-11-30 18:05:18 - app.ml_engine - INFO - parserconfig
+2022-11-30 18:05:18 - app.models.lstm - INFO - lstmmodel
+2022-11-30 18:05:18 - app.test - INFO - hello
+2022-11-30 18:11:28 - app.ml_engine - INFO - parserconfig
+2022-11-30 18:11:28 - app.models.lstm - INFO - lstmmodel
+2022-11-30 18:11:28 - app.test - INFO - hello
+2022-11-30 18:12:03 - app.train - INFO - 0
+2022-11-30 18:12:06 - app.train - INFO - hello
+2022-11-30 18:12:30 - app.train - INFO - 1
+2022-11-30 18:12:32 - app.train - INFO - hello
+2022-11-30 19:18:47 - app.ml_engine - INFO - parserconfig
+2022-11-30 19:18:47 - app.models.lstm - INFO - lstmmodel
+2022-11-30 19:18:47 - app.test - INFO - hello
+2022-11-30 19:18:58 - app.train - INFO -   0%|          | 0/2 [00:00<?, ?it/s]
+2022-11-30 19:19:23 - app.train - INFO - 0
+2022-11-30 19:19:26 - app.train - INFO - hello
+2022-11-30 19:19:26 - app.train - INFO -  50%|#####     | 1/2 [00:27<00:27, 27.39s/it]
+2022-11-30 19:19:52 - app.train - INFO - 1
+2022-11-30 19:19:55 - app.train - INFO - hello
+2022-11-30 19:19:55 - app.train - INFO - 100%|##########| 2/2 [00:56<00:00, 28.43s/it]
+2022-11-30 19:19:55 - app.train - INFO - 100%|##########| 2/2 [00:56<00:00, 28.27s/it]
+2022-11-30 19:20:29 - app.ml_engine - INFO - parserconfig
+2022-11-30 19:20:29 - app.models.lstm - INFO - lstmmodel
+2022-11-30 19:20:40 - app.train - INFO -   0%|          | 0/2 [00:00<?, ?it/s]
+2022-11-30 19:21:08 - app.train - INFO - hello
+2022-11-30 19:21:08 - app.train - INFO -  50%|#####     | 1/2 [00:28<00:28, 28.33s/it]
+2022-11-30 19:21:11 - app.train - INFO -  50%|#####     | 1/2 [00:31<00:31, 31.18s/it]
+2022-11-30 19:43:25 - app.ml_engine - INFO - parserconfig
+2022-11-30 19:44:03 - app.train - INFO - hello
+2022-11-30 19:44:29 - app.train - INFO - hello
+2022-11-30 19:53:48 - app.ml_engine - INFO - parserconfig
+2022-11-30 19:54:25 - app.train - INFO - hello
+2022-11-30 19:54:51 - app.train - INFO - hello
+2022-11-30 20:06:08 - app.ml_engine - INFO - parserconfig
+2022-11-30 20:06:45 - app.train - INFO - hello
+2022-11-30 20:07:13 - app.train - INFO - hello
+2022-11-30 20:45:29 - app.train - INFO - hello
+2022-11-30 20:45:58 - app.train - INFO - hello
+2022-11-30 20:47:57 - app.train - INFO - hello
+2022-11-30 20:49:20 - app.train - INFO - hello
+2022-11-30 20:49:48 - app.train - INFO - hello
+2022-11-30 20:52:09 - app.train - INFO - hello
+2022-11-30 20:52:36 - app.train - INFO - hello
+2022-11-30 21:20:17 - app.train - INFO - hello
+2022-11-30 21:20:44 - app.train - INFO - hello
+2022-11-30 21:21:12 - app.train - INFO - hello
+2022-11-30 21:21:41 - app.train - INFO - hello
+2022-11-30 21:22:09 - app.train - INFO - hello
+2022-11-30 21:22:38 - app.train - INFO - hello
+2022-11-30 21:23:04 - app.train - INFO - hello
+2022-11-30 21:23:33 - app.train - INFO - hello
+2022-11-30 21:24:00 - app.train - INFO - hello
+2022-11-30 21:24:29 - app.train - INFO - hello
+2022-11-30 21:24:58 - app.train - INFO - hello
+2022-11-30 21:25:27 - app.train - INFO - hello
+2022-11-30 21:25:56 - app.train - INFO - hello
+2022-11-30 21:26:23 - app.train - INFO - hello
+2022-11-30 21:26:50 - app.train - INFO - hello
+2022-11-30 21:27:22 - app.train - INFO - hello
+2022-11-30 21:27:51 - app.train - INFO - hello
+2022-11-30 21:28:19 - app.train - INFO - hello
+2022-11-30 21:28:47 - app.train - INFO - hello
+2022-11-30 21:29:13 - app.train - INFO - hello

@@ -1,0 +1,15 @@
+{
+    "model": {
+        "type": "test",
+        "dataset_path": "test.csv",
+        "model_type": "LSTM",
+        "input_size": 7,
+        "hidden_size": 64,
+        "output_size": 1,
+        "seq_len": 24,
+        "batch_size": 30,
+        "flag": "ms",
+        "state_dict_name": "best.pkl",
+        "checkpoint_path": "simple_lstm"
+    }
+}
