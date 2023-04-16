@@ -33,12 +33,12 @@ class MLEngine:
             from app.models.lstm import Net
             self.model = Net(input_size=len(self.model_config['input_columns']),
                                 hidden_size=self.model_config['hidden_size'],
-                                output_size=len(self.model_config['output_size'])).to(self.device)
+                                output_size=len(self.model_config['output_columns'])).to(self.device)
 
         elif self.model_config['model_type'] == 'Regression':
             from app.models.regression import Regression
             self.model = Regression(input_size=len(self.model_config['input_columns']),
-                                    output_size=len(self.model_config['output_size']))
+                                    output_size=len(self.model_config['output_columns']))
 
         else:
             # todo: other model type
@@ -61,7 +61,7 @@ class MLEngine:
                                 seq_len=self.model_config['seq_len'], 
                                 batch_size=self.model_config['batch_size'],
                                 flag=self.model_config['flag'], 
-                                output_size=self.model_config['output_size'],
+                                output_size=len(self.model_config['output_columns']),
                                 input_columns=self.model_config['input_columns'],
                                 output_columns=self.model_config['output_columns'])
 

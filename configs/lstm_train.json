@@ -5,9 +5,7 @@
         "model_type": "LSTM",
         "flag": "ms",
         "epochs": 20,
-        "input_size": 1,
         "seq_len": 24,
-        "output_size": 1,
         "hidden_size": 64,
         "num_layer": 1,
         "lr": 0.05,
@@ -21,5 +19,5 @@
         "checkpoint_path": "simple_lstm",
         "input_columns": [ "온도센서_3"],
         "output_columns": ["온도센서_3"]
-    }   
+    }
 }
