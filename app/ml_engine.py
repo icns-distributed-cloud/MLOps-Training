@@ -76,12 +76,12 @@ class MLEngine:
                 optimizer=self.optimizer,
                 scheduler=self.scheduler,
                 data=self.data,
-                checkpoint_path=self.model_config['checkpoint_path'],
+                checkpoint_path=f'outputs/checkpoints',
                 device=self.device)
     
         test(model=self.model,
                 data=self.data,
-                checkpoint_path=self.model_config['checkpoint_path'],
+                checkpoint_path=f'outputs/checkpoints',
                 # state_dict_name=self.model_config['state_dict_name'],
                 device=self.device)
 
