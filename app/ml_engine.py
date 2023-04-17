@@ -7,6 +7,7 @@ from torch import nn
 from torch.optim.lr_scheduler import StepLR
 
 import logging.config
+import os
 
     
 
@@ -21,6 +22,8 @@ class MLEngine:
         self.model = None
         
         self.data = {}
+
+        os.mkdir('outputs/checkpoints')
 
         self.__parse_config()
         self.__load_dataset()

@@ -1,3 +1,4 @@
 data/*
 checkpoints/*
 app/checkpoints/*
+outputs/checkpoints/*
