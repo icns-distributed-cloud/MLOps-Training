@@ -20,7 +20,7 @@ log = logging.getLogger(__name__)
 
 
 def test(model, data, checkpoint_path, state_dict_name=None, device='cpu'):
-    model.load_state_dict(torch.load(f'checkpoints/best.pkl')['models'])
+    model.load_state_dict(torch.load(f'outputs/checkpoints/best.pkl')['models'])
     model.eval()
 
     pred = []

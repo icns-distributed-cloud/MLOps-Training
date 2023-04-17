@@ -55,7 +55,7 @@ def train(model, epochs, loss_function, optimizer, scheduler, data, checkpoint_p
             min_val_loss = val_loss
             best_model = copy.deepcopy(model)
             state = {'models': model.state_dict()}
-            torch.save(state, f'checkpoints/{epoch}.pkl')
+            torch.save(state, f'outputs/checkpoints/{epoch}.pkl')
 
         # logger.info('epoch {:03d} train_loss {:.8f} val_loss {:.8f}'.format(epoch, np.mean(train_loss), val_loss))
         model.train()
@@ -64,7 +64,7 @@ def train(model, epochs, loss_function, optimizer, scheduler, data, checkpoint_p
 
     if epoch > min_epochs and min_val_loss != 5:
         state = {'models': best_model.state_dict()}
-        torch.save(state, f'checkpoints/best.pkl')
+        torch.save(state, f'outputs/checkpoints/best.pkl')
 
 
 
