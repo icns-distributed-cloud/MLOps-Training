@@ -9,6 +9,7 @@ import argparse
 def arg_parser():
     parser = argparse.ArgumentParser()
     parser.add_argument('-c', '--config', type=str, help='config')
+    parser.add_argument('-d', '--ddd', type=str, help='train_id')
     args = parser.parse_args()
 
     return args
@@ -32,6 +33,7 @@ if __name__ == '__main__':
     args = arg_parser()
 
     config = json.loads(args.config)
+    print(f'train_id: {args.ddd}')
     # config = load_config('./configs/lstm_train.json')
     
     logger = Logger('app')
