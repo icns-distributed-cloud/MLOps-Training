@@ -1,6 +1,6 @@
 import torch
 
-from app.utils.utils import  get_mape
+from app.utils.utils import  *
 from app.models.lstm import  Net
 from tqdm import tqdm
 from itertools import chain
@@ -71,6 +71,6 @@ def test(model, data, checkpoint_path, state_dict_name=None, device='cpu'):
     plt.savefig('outputs/fig2.png', dpi=300)
     
     
-  
+    update_train_info(train_id=1, status=1)
     
 

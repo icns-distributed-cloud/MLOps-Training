@@ -16,11 +16,12 @@ log = logging.getLogger(__name__)
 
 
 class MLEngine:
-    def __init__(self, model_config):
+    def __init__(self, model_config, train_id):
         self.model_config = model_config
         self.device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
         self.model = None
         
+        self.train_id = train_id
         self.data = {}
 
         os.mkdir('outputs/checkpoints')
@@ -85,6 +86,7 @@ class MLEngine:
         test(model=self.model,
                 data=self.data,
                 checkpoint_path=f'outputs/checkpoints',
+                train_id=self.train_id
                 # state_dict_name=self.model_config['state_dict_name'],
                 device=self.device)
 

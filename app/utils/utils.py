@@ -1,4 +1,5 @@
 import numpy as np
+import requests
 
 import torch
 from torch import nn
@@ -22,3 +23,14 @@ def get_val_loss(model, Val, device):
             val_loss.append(loss.item())
 
     return np.mean(val_loss)
+
+
+def update_train_info(train_id, status):
+    body = {'trainId': train_id, 'status': status}
+    res = requests.post('http://163.180.117.186:18088/api/train/post/updatetraininfo', json=body)
+
+    print(res)
+
+
+
+

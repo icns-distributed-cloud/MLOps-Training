@@ -40,6 +40,6 @@ if __name__ == '__main__':
     
     logger = Logger('app')
 
-    ME = MLEngine(config['model'])
+    ME = MLEngine(config['model'], args.ddd)
     ME.run()
     
