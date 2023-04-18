@@ -13,6 +13,7 @@ import numpy as np
 
 def load_csv_data(filename):
     # path = os.path.dirname(os.path.realpath(__file__)) + f'/../data/{filename}'
+    filename = filename[9:]
     print(os.listdir())
     path = f'data/{filename}'
     
