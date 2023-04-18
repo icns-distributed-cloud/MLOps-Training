@@ -33,7 +33,9 @@ if __name__ == '__main__':
     args = arg_parser()
 
     config = json.loads(args.config)
+    print('##############################################')
     print(f'train_id: {args.ddd}')
+    print('##############################################')
     # config = load_config('./configs/lstm_train.json')
     
     logger = Logger('app')
