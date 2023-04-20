@@ -86,7 +86,7 @@ class MLEngine:
         test(model=self.model,
                 data=self.data,
                 checkpoint_path=f'outputs/checkpoints',
-                train_id=self.train_id
+                train_id=self.train_id,
                 # state_dict_name=self.model_config['state_dict_name'],
                 device=self.device)
 
