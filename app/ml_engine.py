@@ -24,8 +24,12 @@ class MLEngine:
         self.train_id = train_id
         self.data = {}
 
-        os.mkdir('outputs/checkpoints')
+        try:
+            os.mkdir('outputs/checkpoints')
+        except:
+            pass
 
+        
         self.__parse_config()
         self.__load_dataset()
 
