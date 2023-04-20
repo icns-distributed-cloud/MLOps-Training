@@ -27,7 +27,7 @@ def get_val_loss(model, Val, device):
 
 def update_train_info(train_id, status):
     body = {'trainId': train_id, 'status': status}
-    res = requests.post('http://163.180.117.186:18088/api/train/post/updatetraininfo', json=body)
+    res = requests.post('http://back.api:18088/api/train/post/updatetraininfo', json=body)
 
     print(res)
 
