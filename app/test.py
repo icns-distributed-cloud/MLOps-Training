@@ -1,7 +1,6 @@
 import torch
 
 from app.utils.utils import  *
-from app.models.lstm import  Net
 from tqdm import tqdm
 from itertools import chain
 from scipy.interpolate import make_interp_spline

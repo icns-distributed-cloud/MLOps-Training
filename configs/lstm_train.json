@@ -1,10 +1,10 @@
 {
     "model": {
         "type": "train",
-        "dataset_path": "happycom01.csv",
+        "dataset_path": "datasets/pre/happycom01.csv",
         "model_type": "LSTM",
         "flag": "ms",
-        "epochs": 2,
+        "epochs": 20,
         "seq_len": 24,
         "hidden_size": 64,
         "num_layer": 1,

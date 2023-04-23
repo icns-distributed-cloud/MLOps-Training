@@ -9,14 +9,14 @@ log = logging.getLogger(__name__)
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
-
+'''
 class LSTMCell(nn.Module):
-    '''
-    https://discuss.pytorch.org/t/custom-lstm-cell-implementation/64566/2
-    pytorch/benchmarks/fastrnns/cutom_lstm.py
+    
+    # https://discuss.pytorch.org/t/custom-lstm-cell-implementation/64566/2
+    # pytorch/benchmarks/fastrnns/cutom_lstm.py
     
     
-    '''
+    
     def __init__(self, input_size, hidden_size):
         super(LSTMCell, self).__init__()
         self.input_size = input_size
@@ -56,11 +56,10 @@ class LSTMCell(nn.Module):
 
 
 class CustomLSTMCell(nn.Module):
-    '''
-    https://towardsdatascience.com/building-a-lstm-by-hand-on-pytorch-59c02a4ec091
     
+    # https://towardsdatascience.com/building-a-lstm-by-hand-on-pytorch-59c02a4ec091
+
     
-    '''
     def __init__(self, input_sz, hidden_sz):
 
         super().__init__()
@@ -208,6 +207,9 @@ class NaiveCustomLSTM(nn.Module):
 
 
 
+
+
+
 class Net(nn.Module):
     def __init__(self, input_size, hidden_size, output_size):
         super().__init__()
@@ -219,12 +221,35 @@ class Net(nn.Module):
         x_ = (x_[:, -1, :])
         x_ = self.fc1(x_)
         return x_
+'''
+
+class LSTM(nn.Module):
+    def __init__(self, input_size, hidden_size, output_size, num_layers):
+        super(LSTM, self).__init__()
+        self.num_layers = num_layers
+        self.hidden_size = hidden_size
+        self.output_size = output_size
+        self.lstm = nn.LSTM(input_size, hidden_size, num_layers, batch_first=True)  # lstm cell, batch first=True (batch, seq, feature), False (seq, batch, feature)
+        self.fc = nn.Linear(hidden_size, output_size, bias=True)
+
+    def forward(self, x):
+        h0 = torch.randn((self.num_layers, x.size(0), self.hidden_size), requires_grad=True)  # if bidirec in future, multiplier flag 2 to num_layers
+        c0 = torch.randn((self.num_layers, x.size(0), self.hidden_size), requires_grad=True)
+        out, _ = self.lstm(x, (h0, c0))  # out:  (batch, seq, hidden)
+        out = self.fc(out[:, -1, :])
+        return out
 
 
+
+
+
+
+'''
 class LSTMModel:
     def __init__(self, model_config):
         self.model = Net(input_size=model_config['input_size'],
                         hidden_size=model_config['hidden_size'],
                         output_size=model_config['output_size'])
     
+'''
 

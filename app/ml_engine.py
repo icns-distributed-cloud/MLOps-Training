@@ -18,7 +18,8 @@ log = logging.getLogger(__name__)
 class MLEngine:
     def __init__(self, model_config, train_id):
         self.model_config = model_config
-        self.device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+        # self.device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+        self.device = torch.device('cpu')
         self.model = None
         
         self.train_id = train_id
@@ -29,7 +30,7 @@ class MLEngine:
         except:
             pass
 
-        
+
         self.__parse_config()
         self.__load_dataset()
 
@@ -38,10 +39,11 @@ class MLEngine:
         self.type = self.model_config['type']
 
         if self.model_config['model_type'] == 'LSTM':
-            from app.models.lstm import Net
-            self.model = Net(input_size=len(self.model_config['input_columns']),
+            from app.models.lstm import LSTM
+            self.model = LSTM(input_size=len(self.model_config['input_columns']),
                                 hidden_size=self.model_config['hidden_size'],
-                                output_size=len(self.model_config['output_columns'])).to(self.device)
+                                output_size=1,
+                                num_layers=self.model_config['num_layer']).to(self.device)
 
         elif self.model_config['model_type'] == 'Regression':
             from app.models.regression import Regression

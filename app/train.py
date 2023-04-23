@@ -4,7 +4,6 @@ from torch.optim.lr_scheduler import StepLR
 
 from app.utils.utils import get_val_loss
 from app.utils.logging import TqdmToLogger, Logger
-from app.models.lstm import LSTM, Net
 from tqdm import tqdm
 import numpy as np
 
