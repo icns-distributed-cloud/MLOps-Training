@@ -70,6 +70,6 @@ def test(model, data, checkpoint_path, train_id, state_dict_name=None, device='c
     plt.savefig('outputs/fig2.png', dpi=300)
     
     
-    update_train_info(train_id=1, status=1)
+    update_train_info(train_id=train_id, status=1)
     
 
