@@ -224,7 +224,7 @@ class Net(nn.Module):
 '''
 
 class LSTM(nn.Module):
-    def __init__(self, input_size, hidden_size, output_size, num_layers):
+    def __init__(self, input_size, hidden_size, output_size=12, num_layers=1):
         super(LSTM, self).__init__()
         self.num_layers = num_layers
         self.hidden_size = hidden_size

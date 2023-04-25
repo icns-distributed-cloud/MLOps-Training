@@ -43,8 +43,8 @@ def test(model, data, checkpoint_path, train_id, state_dict_name=None, device='c
 
     y = (m - n) * y + n
     pred = (m - n) * pred + n
-    print(f'y: {y}')
-    print(f'pred: {pred}')
+    print(f'y: {len(y)}')
+    print(f'pred: {len(pred)}')
 
 
     # print('mape:', get_mape(y, pred))

@@ -2,3 +2,4 @@ data/*
 checkpoints/*
 app/checkpoints/*
 outputs/checkpoints/*
+practice.py

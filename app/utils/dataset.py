@@ -6,8 +6,10 @@ from sklearn.preprocessing import MinMaxScaler
 import torch
 
 import os
+import json
 import pandas as pd
 import numpy as np
+
 
 # todo: separate train, val, test data loader
 
@@ -57,12 +59,15 @@ def load_data(filename, seq_len, batch_size, flag, output_size, input_columns, o
     
     # multivariate multistep
     elif flag == 'mm':
-        Dtr, Val, Dte, min_max_dict = nn_seq_mm(filename, B=batch_size, num=output_size, input_columns=input_columns, output_columns=output_columns, seq_len=seq_len)
+        Dtr, Val, Dte, min_max_dict = nn_seq_mm(filename, B=batch_size, num=12, input_columns=input_columns, output_columns=output_columns, seq_len=seq_len)
     
     
     elif flag == 'test':
         Dtr, Val, Dte, min_max_dict = test(filename, B=batch_size, seq_len=seq_len)
 
+
+    with open('outputs/min_max.json', 'w', encoding='utf-8') as f:
+        f.write(json.dumps(min_max_dict, ensure_ascii=False)) 
     # return Dtr, Val, Dte, m, n
 
     return dict(
@@ -100,9 +105,51 @@ def nn_seq_mm(filename, B, num, input_columns, output_columns, seq_len=1):
     train = dataset[:int(len(dataset) * 0.6)]
     val = dataset[int(len(dataset) * 0.6):int(len(dataset) * 0.8)]
     test = dataset[int(len(dataset) * 0.8):len(dataset)]
-    m, n = np.max(train[train.columns[1]]), np.min(train[train.columns[1]])
 
+    min_max_dict = {}
+    for input_column in input_columns:
+        column_idx = dataset.columns.get_loc(input_column)
+        m, n = np.max(train[input_column]), np.min(train[input_column])
+        min_max_dict[input_column] = {'idx': column_idx, 'max': m, 'min': n}
+
+    output_column_idx = dataset.columns.get_loc(output_columns[0])
+    m, n = np.max(train[output_columns[0]]), np.min(train[output_columns[0]])
+    min_max_dict['output'] = {'idx': output_column_idx, 'max': m, 'min': n}
+
+    # m, n = np.max(train[train.columns[1]]), np.min(train[train.columns[1]])
+    print(min_max_dict)
+    
     def process(data, batch_size, step_size):
+        scaler = MinMaxScaler()
+        data[input_columns] = scaler.fit_transform(data[input_columns])
+
+        output_column_data = data[output_columns[0]]
+        output_column_data = output_column_data.tolist()
+        data = data.values.tolist()
+
+        seq = []
+        for i in range(0, len(data) - seq_len - num, step_size):
+            train_seq = []
+            train_label = []
+
+            for j in range(i, i + seq_len):
+                x = []
+                for input_column in input_columns:
+                    x.append(data[j][min_max_dict[input_column]['idx']])
+                train_seq.append(x)
+            for j in range(i + seq_len, i + seq_len + num):
+                train_label.append(output_column_data[j])
+
+            
+            train_seq = torch.FloatTensor(train_seq)
+            train_label = torch.FloatTensor(train_label).view(-1)
+            seq.append((train_seq, train_label))
+
+
+
+
+
+        '''
         load = data[data.columns[1]]
         data = data.values.tolist()
         load = (load - n) / (m - n)
@@ -125,6 +172,8 @@ def nn_seq_mm(filename, B, num, input_columns, output_columns, seq_len=1):
             train_label = torch.FloatTensor(train_label).view(-1)
             seq.append((train_seq, train_label))
 
+        '''
+
         # print(seq[-1])
         seq = MyDataset(seq)
         seq = DataLoader(dataset=seq, batch_size=batch_size, shuffle=False, num_workers=0, drop_last=False)
@@ -135,7 +184,7 @@ def nn_seq_mm(filename, B, num, input_columns, output_columns, seq_len=1):
     Val = process(val, B, step_size=1)
     Dte = process(test, B, step_size=num)
 
-    return Dtr, Val, Dte, m, n
+    return Dtr, Val, Dte, min_max_dict
  
 
 # Multivariate-SingleStep-LSTM data processing.

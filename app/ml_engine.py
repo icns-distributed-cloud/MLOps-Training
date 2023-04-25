@@ -3,11 +3,13 @@ from app.train import train
 from app.test import test
 
 import torch
+
 from torch import nn
 from torch.optim.lr_scheduler import StepLR
 
 import logging.config
 import os
+import json
 
     
 
@@ -18,6 +20,10 @@ log = logging.getLogger(__name__)
 class MLEngine:
     def __init__(self, model_config, train_id):
         self.model_config = model_config
+
+        with open('outputs/config.json', 'w', encoding='utf-8') as f:
+            f.write(json.dumps(model_config, ensure_ascii=False)) 
+
         # self.device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
         self.device = torch.device('cpu')
         self.model = None
@@ -42,7 +48,7 @@ class MLEngine:
             from app.models.lstm import LSTM
             self.model = LSTM(input_size=len(self.model_config['input_columns']),
                                 hidden_size=self.model_config['hidden_size'],
-                                output_size=1,
+                                output_size=12,
                                 num_layers=self.model_config['num_layer']).to(self.device)
 
         elif self.model_config['model_type'] == 'Regression':
