@@ -56,7 +56,7 @@ def train(model, epochs, loss_function, optimizer, scheduler, data, checkpoint_p
             state = {'models': model.state_dict()}
             torch.save(state, f'outputs/checkpoints/{epoch}.pkl')
 
-        # logger.info('epoch {:03d} train_loss {:.8f} val_loss {:.8f}'.format(epoch, np.mean(train_loss), val_loss))
+        logger.info('epoch {:03d} train_loss {:.8f} val_loss {:.8f}'.format(epoch, np.mean(train_loss), val_loss))
         model.train()
         print(f'loss: {loss}')
         print(f'val_loss: {val_loss}')
