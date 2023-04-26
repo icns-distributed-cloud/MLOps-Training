@@ -46,9 +46,13 @@ class MLEngine:
 
         if self.model_config['model_type'] == 'LSTM':
             from app.models.lstm import LSTM
+            if self.model_config['flag'] == 'mm':
+                output_size = 12
+            else:
+                output_size = 1
             self.model = LSTM(input_size=len(self.model_config['input_columns']),
                                 hidden_size=self.model_config['hidden_size'],
-                                output_size=12,
+                                output_size=output_size,
                                 num_layers=self.model_config['num_layer']).to(self.device)
 
         elif self.model_config['model_type'] == 'Regression':

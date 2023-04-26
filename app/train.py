@@ -40,7 +40,9 @@ def train(model, epochs, loss_function, optimizer, scheduler, data, checkpoint_p
         for (seq, label) in data['train_data']:
             seq = seq.to(device)
             label = label.to(device)
+            # print(f'label: {label}')
             y_pred = model(seq)
+            # print(f'y_pred: {y_pred}')
             loss = loss_function(y_pred, label)
             train_loss.append(loss.item())
             optimizer.zero_grad()
@@ -56,7 +58,7 @@ def train(model, epochs, loss_function, optimizer, scheduler, data, checkpoint_p
             state = {'models': model.state_dict()}
             torch.save(state, f'outputs/checkpoints/{epoch}.pkl')
 
-        logger.info('epoch {:03d} train_loss {:.8f} val_loss {:.8f}\n'.format(epoch, np.mean(train_loss), val_loss))
+        logger.info('epoch {:03d} train_loss {:.8f} val_loss {:.8f}\n'.format(epoch, loss, val_loss))
         model.train()
         print(f'loss: {loss}')
         print(f'val_loss: {val_loss}')

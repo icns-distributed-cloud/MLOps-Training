@@ -3,8 +3,8 @@
         "type": "train",
         "dataset_path": "datasets/pre/happycom01.csv",
         "model_type": "LSTM",
-        "flag": "mm",
-        "epochs": 50,
+        "flag": "ms",
+        "epochs": 30,
         "seq_len": 24,
         "hidden_size": 64,
         "num_layer": 1,
@@ -18,6 +18,6 @@
         "gamma": 0.5,
         "checkpoint_path": "simple_lstm",
         "input_columns": [ "온도센서_3", "습도센서_4", "PM1.0_5"],
-        "output_columns": ["온도센서_3"]
+        "output_columns": ["습도센서_4"]
     }
 }
