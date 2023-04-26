@@ -104,7 +104,9 @@ def nn_seq_mm(filename, B, num, input_columns, output_columns, seq_len=1):
     # split
     train = dataset[:int(len(dataset) * 0.6)]
     val = dataset[int(len(dataset) * 0.6):int(len(dataset) * 0.8)]
-    test = dataset[int(len(dataset) * 0.8):len(dataset)]
+    test = dataset[:int(len(dataset) * 0.2)]
+
+    # test = dataset[int(len(dataset) * 0.8):len(dataset)]
 
     min_max_dict = {}
     for input_column in input_columns:
